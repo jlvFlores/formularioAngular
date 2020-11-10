@@ -17,6 +17,9 @@
                required
                minlength="3"
                #nombre="ngModel">
+        
+        <small *ngIf="nombre.invalid && nombre.touched" 
+            class="form-text text-danger">Ingrese 3 letras</small>
       </div>
     </div>
 
@@ -33,6 +36,9 @@
                required
                minlength="3"
                #apellido="ngModel">
+        
+        <small *ngIf="apellido.invalid && apellido.touched" 
+            class="form-text text-danger">Ingrese 3 letras</small>
       </div>
     </div>
 
@@ -43,14 +49,17 @@
     <div class="col-8">
 
       <input class="form-control"
-             type="email"
-             name="correo"
-             placeholder="Correo electrónico"
-             [class.is-invalid]="correo.invalid && correo.touched"
-             [ngModel]='usuario.correo'
-             required
-             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-             #correo="ngModel">
+            type="email"
+            name="correo"
+            placeholder="Correo electrónico"
+            [class.is-invalid]="correo.invalid && correo.touched"
+            [ngModel]='usuario.correo'
+            required
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+            #correo="ngModel">
+
+        <small *ngIf="correo.invalid && correo.touched" 
+            class="form-text text-danger">correo invalido</small>
     </div>
   </div>
 
