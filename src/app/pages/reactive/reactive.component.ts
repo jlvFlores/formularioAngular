@@ -13,6 +13,7 @@ export class ReactiveComponent implements OnInit {
   constructor(private fb: FormBuilder ) {
 
     this.crearFormulario();
+    this.cargarDataAlFormulario();
 
   }
 
@@ -40,11 +41,26 @@ export class ReactiveComponent implements OnInit {
     this.forma = this.fb.group({
       nombre  : ['', [ Validators.required, Validators.minLength(3) ] ],
       apellido: ['', [ Validators.required, Validators.minLength(2) ] ],
-      correo  : ['', [ Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')] ],
+      correo  : ['', [ Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$') ] ],
       direccion: this.fb.group({
         distrito: ['', Validators.required ],
         ciudad  : ['', Validators.required ],
       })
+    });
+
+  }
+
+  cargarDataAlFormulario() {
+
+    // this.forma.setValue({
+    this.forma.reset({
+      nombre: 'luis',
+      apellido: 'vazquez',
+      correo: 'luis@gmail.com',
+      direccion: {
+        distrito: 'centro',
+        ciudad: 'xaloztoc'
+      }
     });
   }
 
@@ -64,6 +80,11 @@ export class ReactiveComponent implements OnInit {
       });
 
     }
+
+    // posteo de informacion
+    this.forma.reset({
+      nombre: 'Sin nombre'
+    });
 
   }
 
