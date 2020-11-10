@@ -12,4 +12,7 @@ export class TemplateComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  guardar(): void {
+    console.log('Submit disparado');
+  }
 }
