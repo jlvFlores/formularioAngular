@@ -55,9 +55,7 @@ export class ReactiveComponent implements OnInit {
         distrito: ['', Validators.required ],
         ciudad  : ['', Validators.required ],
       }),
-      pasatiempos: this.fb.array([
-        [], [], [], [], []
-      ])
+      pasatiempos: this.fb.array([])
     });
 
   }
@@ -74,6 +72,14 @@ export class ReactiveComponent implements OnInit {
         ciudad: 'xaloztoc'
       }
     });
+    ['comer', 'dormir'].forEach( valor => this.pasatiempos.push( this.fb.control(valor) ));
+  }
+
+  agregarPasatiempo() {
+    this.pasatiempos.push( this.fb.control('') );
+  }
+  borrarPasatiempo(i: number) {
+    this.pasatiempos.removeAt(i);
   }
 
   guardar() {
